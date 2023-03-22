@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../assets/logo.png";
 import { firebaseAuth } from "../utils/firebase-config";
-import { FaPowerOff, FaSearch } from "react-icons/fa";
+import { FaPowerOff, FaSearch, FaGithub } from "react-icons/fa";
 export default function Navbar({ isScrolled }) {
   const [showSearch, setShowSearch] = useState(false);
   const [inputHover, setInputHover] = useState(false);
@@ -14,6 +14,10 @@ export default function Navbar({ isScrolled }) {
     { name: "Movies", link: "/movies" },
     { name: "My List", link: "/mylist" },
   ];
+
+  const RedirectGit = () => {
+    window.location.href = "https://github.com/evandrotvc/netflix-clone"
+  }
 
   return (
     <Container>
@@ -33,6 +37,9 @@ export default function Navbar({ isScrolled }) {
           </ul>
         </div>
         <div className="right flex a-center">
+          <button onClick={() => RedirectGit() }>
+            <FaGithub color="white" />
+          </button>
           <div className={`search ${showSearch ? "show-search" : ""}`}>
             <button
               onFocus={() => setShowSearch(true)}
