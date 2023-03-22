@@ -7,6 +7,7 @@ import BackgroundImage from "../components/BackgroundImage";
 import Header from "../components/Header";
 import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import { firebaseAuth } from "../utils/firebase-config";
+import { toast } from 'react-toastify'
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -16,8 +17,10 @@ function Login() {
   const handleLogin = async () => {
     try {
       await signInWithEmailAndPassword(firebaseAuth, email, password);
+      toast.success("login sucess!");
     } catch (error) {
       console.log(error.code);
+      toast.error("User or password incorrect");
     }
   };
 

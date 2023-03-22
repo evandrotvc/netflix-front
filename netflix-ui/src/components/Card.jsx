@@ -13,6 +13,7 @@ import { useDispatch } from "react-redux";
 import { removeMovieFromLiked } from "../store";
 import video from "../assets/video.mp4";
 import video2 from "../assets/video2.mp4";
+import { toast } from 'react-toastify'
 
 export default React.memo(function Card({ index, movieData, isLiked = false }) {
   const navigate = useNavigate();
@@ -32,8 +33,10 @@ export default React.memo(function Card({ index, movieData, isLiked = false }) {
         email,
         data: movieData,
       });
+      toast.success("Movie added in your list!");
     } catch (error) {
       console.log(error);
+      toast.success("Movie added in your list!");
     }
   };
 

@@ -8,6 +8,8 @@ import styled from "styled-components";
 import BackgroundImage from "../components/BackgroundImage";
 import Header from "../components/Header";
 import { firebaseAuth } from "../utils/firebase-config";
+import { toast } from 'react-toastify'
+
 function Signup() {
   const [showPassword, setShowPassword] = useState(false);
   const [formValues, setFormValues] = useState({
@@ -20,8 +22,9 @@ function Signup() {
     try {
       const { email, password } = formValues;
       await createUserWithEmailAndPassword(firebaseAuth, email, password);
+      toast.success("User created with sucess!");
     } catch (error) {
-      console.log(error);
+      toast.error(error.message);
     }
   };
 
